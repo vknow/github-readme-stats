@@ -33,13 +33,13 @@ const DONUT_VERTICAL_LAYOUT_DEFAULT_LANGS_COUNT = 6;
  * Retrieves the programming language whose name is the longest.
  *
  * @param {Lang[]} arr Array of programming languages.
- * @returns {Object} Longest programming language object.
+ * @returns {{ name: string, size: number, color: string }} Longest programming language object.
  */
 const getLongestLang = (arr) =>
   arr.reduce(
     (savedLang, lang) =>
       lang.name.length > savedLang.name.length ? lang : savedLang,
-    { name: "", size: null, color: "" },
+    { name: "", size: 0, color: "" },
   );
 
 /**
@@ -392,7 +392,7 @@ const renderCompactLayout = (langs, width, totalLanguageSize, hideProgress) => {
       ${createLanguageTextNode({
         langs,
         totalSize: totalLanguageSize,
-        hideProgress: hideProgress,
+        hideProgress,
       })}
     </g>
   `;
